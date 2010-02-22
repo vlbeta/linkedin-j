@@ -84,8 +84,8 @@ client.postNetworkUpdate(updateText);
 To search for people, you will have to specify the serach parameters in a map:
 {{{
 Map<SearchParameter, String> searchParameters = new EnumMap<SearchParameter, String>(SearchParameter.class);
-searchParameters.put(SearchParameter.KEYWORDS, line.getOptionValue(KEYWORDS_OPTION));
-searchParameters.put(SearchParameter.COMPANY, line.getOptionValue(COMPANY_OPTION));
+searchParameters.put(SearchParameter.KEYWORDS, keywords);
+searchParameters.put(SearchParameter.COMPANY, companyName);
 
 People people = client.searchPeople(searchParameters);
 System.out.println("Total search result:" + people.getCount());
