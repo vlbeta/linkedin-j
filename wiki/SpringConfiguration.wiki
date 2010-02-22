@@ -1,4 +1,5 @@
 #summary This page describes the configuration of the library using spring framework.
+#labels Phase-Support
 
 = Introduction =
 
@@ -45,5 +46,14 @@ Configuring asynchronous API client is similar to the one described above, excep
 <bean id="linkedInApiClient" factory-bean="linkedInApiClientFactory" factory-method="createAsyncLinkedInApiClient">
 	 <constructor-arg value="token-key"/> 
 	 <constructor-arg value="token-secret"/> 
+</bean>
+}}}
+== Configuring OAuth Service ==
+Configuring OAuth Service also follows a similar pattern:
+{{{
+<bean id="linkedInApiOAuthFactory" class="com.google.code.linkedinapi.client.oauth.LinkedInOAuthServiceFactory" factory-method="getInstance"/>
+<bean id="linkedInOAuthService" factory-bean="linkedInApiOAuthFactory" factory-method="createLinkedInOAuthService">
+	 <constructor-arg value="api-key"/> 
+	 <constructor-arg value="api-secret"/> 
 </bean>
 }}}
