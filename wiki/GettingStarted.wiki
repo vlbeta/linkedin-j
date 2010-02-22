@@ -11,12 +11,36 @@ All the methods in the library can be divided into the following categories.
   * Search API
   * Messaging API
 The next section gives a brief example of each API. For complete stand-alone examples please checkout the examples source from svn.
-
+----
 = API Usage =
 
 == Creating the Client ==
+{{{
+final LinkedInApiClientFactory factory = LinkedInApiClientFactory.newInstance(consumerKeyValue, consumerSecretValue);
+final LinkedInApiClient client = factory.createLinkedInApiClient(accessTokenValue, tokenSecretValue);
+
+}}}
+---- 
 == Profile API Example ==
+{{{
+Person profile = client.getProfileById(id);
+}}}
+{{{
+Person profile = client.getProfileByUrl(url, profileType);
+}}}
+{{{
+Person profile = client.getProfileForCurrentUser(EnumSet.of(ProfileField.FIRST_NAME, ProfileField.LAST_NAME, ProfileField.HEADLINE));
+}}}
+---- 
 == Connections API Example ==
+
+---- 
 == Network Updates API Example ==
+
+---- 
 == Search API Example ==
+
+---- 
 == Messaging API Example ==
+
+---- 
