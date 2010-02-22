@@ -24,19 +24,49 @@ final LinkedInApiClient client = factory.createLinkedInApiClient(accessTokenValu
 == Profile API Example ==
 {{{
 Person profile = client.getProfileById(id);
+System.out.println("Name:" + profile.getFirstName() + " " + profile.getLastName());
+System.out.println("Headline:" + profile.getHeadline());
+System.out.println("Summary:" + profile.getSummary());
+System.out.println("Industry:" + profile.getIndustry());
+System.out.println("Picture:" + profile.getPictureUrl());
 }}}
 {{{
-Person profile = client.getProfileByUrl(url, profileType);
+Person profile = client.getProfileByUrl(url, ProfileType.PUBLIC);
 }}}
 {{{
 Person profile = client.getProfileForCurrentUser(EnumSet.of(ProfileField.FIRST_NAME, ProfileField.LAST_NAME, ProfileField.HEADLINE));
 }}}
 ---- 
 == Connections API Example ==
-
+{{{
+Connections connections = client.getConnectionsForCurrentUser();
+System.out.println("Total connections fetched:" + connections.getTotal());
+for (Person person : connections.getPersonList()) {
+	System.out.println(person.getId() + ":" + person.getFirstName() + " " + person.getLastName() + ":" + person.getHeadline());
+}
+}}}
+{{{
+Connections connections = client.getConnectionsByUrl(url, EnumSet.of(ProfileField.FIRST_NAME, ProfileField.LAST_NAME, ProfileField.HEADLINE));
+}}}
+{{{
+Connections connections = client.getConnectionsForCurrentUser(EnumSet.of(ProfileField.FIRST_NAME, ProfileField.LAST_NAME, ProfileField.HEADLINE), 1, 50);
+}}}
 ---- 
 == Network Updates API Example ==
-
+{{{
+Network network = client.getNetworkUpdates(EnumSet.of(NetworkUpdateType.STATUS_UPDATE));
+System.out.println("Total updates fetched:" + network.getUpdates().getTotal());
+for (Update update : network.getUpdates().getUpdateList()) {
+	System.out.println("-------------------------------");
+	System.out.println(update.getUpdateKey() + ":" + update.getUpdateContent().getPerson().getFirstName() + " " + update.getUpdateContent().getPerson().getLastName() + "->" + update.getUpdateContent().getPerson().getCurrentStatus());
+	if (update.getUpdateComments() != null) {
+		System.out.println("Total comments fetched:" + update.getUpdateComments().getTotal());
+		for (UpdateComment comment : update.getUpdateComments().getUpdateCommentList()) {
+			System.out.println(comment.getPerson().getFirstName() + " " + comment.getPerson().getLastName() + "->" + comment.getComment());				
+		}
+	}
+}
+}}}
 ---- 
 == Search API Example ==
 
