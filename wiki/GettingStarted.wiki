@@ -69,8 +69,25 @@ for (Update update : network.getUpdates().getUpdateList()) {
 }}}
 ---- 
 == Search API Example ==
+{{{
+Map<SearchParameter, String> searchParameters = new EnumMap<SearchParameter, String>(SearchParameter.class);
+searchParameters.put(SearchParameter.KEYWORDS, line.getOptionValue(KEYWORDS_OPTION));
+searchParameters.put(SearchParameter.COMPANY, line.getOptionValue(COMPANY_OPTION));
 
+People people = client.searchPeople(searchParameters);
+System.out.println("Total search result:" + people.getCount());
+for (Person person : people.getPersonList()) {
+	System.out.println(person.getId() + ":" + person.getFirstName() + " " + person.getLastName() + ":" + person.getHeadline());
+}
+
+}}}
 ---- 
 == Messaging API Example ==
+{{{
+client.sendMessage(Arrays.asList(id1, id2), subject, message);
+}}}
+{{{
+client.sendInviteByEmail(email, firstName, lastName, subject, message);
+}}}
 
 ---- 
