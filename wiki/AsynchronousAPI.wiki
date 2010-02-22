@@ -1,13 +1,13 @@
-#summary One-sentence summary of this page.
+#summary This page describes the Asynchronous API included with the library.
+#labels Phase-Support
 
 = Introduction =
 
-Add your content here.
+The linkedin-j library includes a asynchronous operations API that can be used to call LinkedIn API methods in an asynchronous fashion. i.e. The client will not need to wait for the API response to proceed.
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Creating Asynchronous Client ==
+== Invoking an Asynchronous Operation ==
+== Invoking Methods That Return a Result ==
