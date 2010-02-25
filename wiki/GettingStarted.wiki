@@ -1,5 +1,5 @@
 #summary This page gives brief examples of how to use the library.
-#labels Phase-Support
+#labels Phase-Support,Featured
 
 = Introduction =
 Calling the methods of the API need access token and secret which is obtained by following the OAuth flow described here. [OAuthFlow OAuth Flow]
