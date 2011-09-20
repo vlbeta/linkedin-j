@@ -8,6 +8,7 @@ The jar in the maven repository is named linkedin-j-core-xxx.jar and is larger i
 
 
 = Details =
+Include this section in your pom.xml file.
 
 {{{
 <dependency>
