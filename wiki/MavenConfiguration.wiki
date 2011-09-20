@@ -9,9 +9,11 @@ The jar in the maven repository is named linkedin-j-core-xxx.jar and is larger i
 
 = Details =
 
+{{{
 <dependency>
   <groupId>com.googlecode.linkedin-j</groupId>
   <artifactId>linkedin-j-core</artifactId>
   <version>1.0.416</version>
   <scope>compile</scope>
-</dependency>    
+</dependency>
+}}}
